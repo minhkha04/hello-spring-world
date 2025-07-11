@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+<h1>Login Page</h1>
+<div style="text-align: center;">
+    <form action="/login" method="post">
+        <p>
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" required>
+        </p>
+        <p>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" required   >
+        </p>
+        <p>
+            <input type="submit" value="Login">
+        </p>
+    </form>
+    <p th:text="${error}" style="color: red"></p>
+    <footer>
+        <p>Copyright &copy; MinhKha</p>
+    </footer>
+</div>
+
+</body>
+</html>

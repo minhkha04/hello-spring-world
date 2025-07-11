@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+
+<h1>List Products</h1>
+<p>
+    <span th:text="'Username: ' + ${user.username} + ' - Role: ' + ${user.role}"></span>
+</p>
+<a th:if="${user.role == 'ADMIN'}" th:href="@{'/products/add'}">Add Product</a>
+<script th:if="${message}" th:inline="javascript">
+    window.addEventListener('load', function () {
+        alert([[${message}]]);
+    });
+</script>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th th:if="${user.role == 'ADMIN'}">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:if="${user.role == 'ADMIN'}">
+            <a th:href="@{'/products/edit/' + ${product.id}}">Edit</a>|
+            <a th:href="@{'/products/delete/' + ${product.id}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<p th:if="${newProdcut != null}" th:text="${newProduct.name}"></p>
+</body>
+</html>
