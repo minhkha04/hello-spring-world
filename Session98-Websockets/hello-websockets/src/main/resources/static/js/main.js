@@ -75,7 +75,7 @@ function onMessageReceived(payload) {
     if (message.type === 'JOIN') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' joined!';
-    } else if (message.type === 'LEAVE') {
+    } else if (message.type === 'LEAVER') {
         messageElement.classList.add('event-message');
         message.content = message.sender + ' left!';
     } else {
